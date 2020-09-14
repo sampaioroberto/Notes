@@ -74,31 +74,16 @@ private extension NotesViewController {
     }
 }
 
-final class SwipeEnabledDiffableDataSource: UITableViewDiffableDataSource<Section, UUID> {
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard let note = itemIdentifier(for: indexPath) else {
-            return
-        }
-        var currentSnapshot = snapshot()
-        currentSnapshot.deleteItems([note])
-        apply(currentSnapshot)
-    }
-}
-
 extension NotesViewController: NotesSaving {
     func saveNote(_ note: Note) {
+        var snapshot = dataSource.snapshot()
         if let index = notes.firstIndex(of: note) {
             notes[index] = note
+            snapshot.reloadItems([note.identifier])
         } else {
             notes.append(note)
+            snapshot.appendItems([note.identifier])
         }
-        var snapshot = Snapshot()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(notes.map(\.identifier), toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
