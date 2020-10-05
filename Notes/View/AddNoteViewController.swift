@@ -1,15 +1,13 @@
 import UIKit
 
 final class AddNoteViewController: UIViewController {
-    private let padding: CGFloat = 8.0
-
     weak var notesSaving: NotesSaving?
     private var note: Note?
 
     private let titleTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.boldSystemFont(ofSize: 18)
-        textField.backgroundColor = .systemBackground
+        textField.backgroundColor = .systemGray
         textField.rounded()
         return textField
     }()
@@ -17,9 +15,18 @@ final class AddNoteViewController: UIViewController {
     private let descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 14)
-        textView.backgroundColor = .systemBackground
+        textView.backgroundColor = .systemGray
         textView.rounded()
         return textView
+    }()
+
+    private let button: CustomTintButton = {
+        let button = CustomTintButton(type: .custom)
+        button.setTitleColor(.systemGray6, for: .normal)
+        button.setTitle("Salvar", for: .normal)
+        button.rounded()
+        button.addTarget(self, action: #selector(didTouchSaveButton), for: .touchUpInside)
+        return button
     }()
 
     init(notesSaving: NotesSaving, note: Note? = nil) {
@@ -45,9 +52,43 @@ final class AddNoteViewController: UIViewController {
         view.backgroundColor = .systemBackground
         buildViewHierarchy()
         setupConstraints()
+        view.directionalLayoutMargins = NSDirectionalEdgeInsets.init(top: 16, leading: 16, bottom: 0, trailing: 16)
+    }
+    
+    func buildViewHierarchy() {
+        view.addSubview(titleTextField)
+        view.addSubview(descriptionTextView)
+        view.addSubview(button)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
+    func setupConstraints() {
+        titleTextField.translatesAutoresizingMaskIntoConstraints = false
+        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        titleTextField.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
+        titleTextField.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
+        titleTextField.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
+        titleTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+        descriptionTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: 8.0).isActive = true
+        descriptionTextView.leadingAnchor.constraint(equalTo: titleTextField.leadingAnchor).isActive = true
+        descriptionTextView.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor).isActive = true
+        descriptionTextView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
+
+        button.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 8.0).isActive = true
+        button.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
+        button.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
+    }
+}
+
+private extension AddNoteViewController {
+    @objc func didTouchSaveButton() {
+        save()
+        navigationController?.popViewController(animated: true)
+    }
+
+    func save() {
         guard
             let titleText = titleTextField.text,
             let descriptionText = descriptionTextView.text,
@@ -65,25 +106,5 @@ final class AddNoteViewController: UIViewController {
         note.title = titleText
         note.description = descriptionText
         notesSaving?.saveNote(note)
-    }
-
-    func buildViewHierarchy() {
-        view.addSubview(titleTextField)
-        view.addSubview(descriptionTextView)
-    }
-
-    func setupConstraints() {
-        titleTextField.translatesAutoresizingMaskIntoConstraints = false
-        descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
-
-        titleTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: padding).isActive = true
-        titleTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding).isActive = true
-        titleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding).isActive = true
-        titleTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
-        descriptionTextView.topAnchor.constraint(equalTo: titleTextField.bottomAnchor, constant: padding).isActive = true
-        descriptionTextView.leadingAnchor.constraint(equalTo: titleTextField.leadingAnchor).isActive = true
-        descriptionTextView.trailingAnchor.constraint(equalTo: titleTextField.trailingAnchor).isActive = true
-        descriptionTextView.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
     }
 }

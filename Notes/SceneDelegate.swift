@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         let navigationController = UINavigationController(rootViewController: NotesViewController())
         navigationController.navigationBar.isTranslucent = false
+        navigationController.view.tintColor = .systemBlue
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.

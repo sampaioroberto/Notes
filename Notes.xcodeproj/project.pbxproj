@@ -12,6 +12,7 @@
 		AC0CE6A3250066CB00DDB7A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC0CE6A2250066CB00DDB7A2 /* Assets.xcassets */; };
 		AC0CE6A6250066CB00DDB7A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC0CE6A4250066CB00DDB7A2 /* LaunchScreen.storyboard */; };
 		AC0CE6AE2500670B00DDB7A2 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CE6AD2500670B00DDB7A2 /* NotesViewController.swift */; };
+		AC1A3C1D252BD5AA000F57A0 /* CustomTintButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A3C1C252BD5AA000F57A0 /* CustomTintButton.swift */; };
 		AC7CF12C2501213C0050A2BA /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7CF12B2501213C0050A2BA /* Note.swift */; };
 		AC7CF12E250121700050A2BA /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7CF12D250121700050A2BA /* NoteCell.swift */; };
 		AC7CF150250123B30050A2BA /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7CF14F250123B30050A2BA /* AddNoteViewController.swift */; };
@@ -27,6 +28,7 @@
 		AC0CE6A5250066CB00DDB7A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC0CE6A7250066CB00DDB7A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC0CE6AD2500670B00DDB7A2 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		AC1A3C1C252BD5AA000F57A0 /* CustomTintButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTintButton.swift; sourceTree = "<group>"; };
 		AC7CF12B2501213C0050A2BA /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		AC7CF12D250121700050A2BA /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		AC7CF14F250123B30050A2BA /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				AC7CF14F250123B30050A2BA /* AddNoteViewController.swift */,
 				AC7CF12D250121700050A2BA /* NoteCell.swift */,
 				AC7CF151250137610050A2BA /* UIView+Rounded.swift */,
+				AC1A3C1C252BD5AA000F57A0 /* CustomTintButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				AC7CF12E250121700050A2BA /* NoteCell.swift in Sources */,
 				AC0CE6AE2500670B00DDB7A2 /* NotesViewController.swift in Sources */,
 				AC7CF12C2501213C0050A2BA /* Note.swift in Sources */,
+				AC1A3C1D252BD5AA000F57A0 /* CustomTintButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

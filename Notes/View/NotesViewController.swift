@@ -90,6 +90,7 @@ extension NotesViewController: NotesSaving {
 
 extension NotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         let controller = AddNoteViewController(notesSaving: self, note: notes[indexPath.row])
         navigationController?.pushViewController(controller, animated: true)
     }
