@@ -9,7 +9,7 @@ final class AddNoteViewController: UIViewController {
     private let titleTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.boldSystemFont(ofSize: 18)
-        textField.backgroundColor = .white
+        textField.backgroundColor = .systemBackground
         textField.rounded()
         return textField
     }()
@@ -17,7 +17,7 @@ final class AddNoteViewController: UIViewController {
     private let descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 14)
-        textView.backgroundColor = .white
+        textView.backgroundColor = .systemBackground
         textView.rounded()
         return textView
     }()
@@ -42,7 +42,7 @@ final class AddNoteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemBackground
         buildViewHierarchy()
         setupConstraints()
     }
